@@ -1,0 +1,22 @@
+{
+  "extends": "@jupiter/tsconfig/react",
+  "compilerOptions": {
+    "declaration": false,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@@/*": [
+        "./node_modules/.jupiter_exports/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "api",
+    "server",
+    "electron"
+  ]
+}

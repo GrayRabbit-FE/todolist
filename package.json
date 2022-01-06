@@ -1,0 +1,69 @@
+{
+  "private": true,
+  "name": "todolist",
+  "version": "1.0.0",
+  "scripts": {
+    "new": "jupiter new",
+    "setup": "npm run reset && npx @jupiter/install-dep -i=\"yarn install\"",
+    "reset": "rm -rf node_modules",
+    "lint": "jupiter lint",
+    "lint:error": "jupiter lint --quiet",
+    "test": "echo '请在项目根目录执行 yarn new  启用单元测试、集成测试功能。'",
+    "dev": "ROUTE_IP=10.225.130.44 jupiter dev",
+    "build": "jupiter build",
+    "start": "jupiter start",
+    "preview": "jupiter deploy --mode preview",
+    "deploy": "jupiter deploy"
+  },
+  "engines": {
+    "node": ">=12.17.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color --cache --quiet",
+      "git add"
+    ],
+    "*.{js,jsx,mjs,mjsx,cjs,cjsx}": [
+      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color --cache --quiet",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@jupiter"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "dist/",
+    "lib/",
+    ".rpt2_cache/"
+  ],
+  "dependencies": {
+    "@jupiter/plugin-runtime": "^4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@jupiter/app-tools": "^4",
+    "@jupiter/plugin-jarvis": "^4",
+    "typescript": "^4",
+    "@types/jest": "^26.0.9",
+    "@types/react": "^17",
+    "@types/react-dom": "^17",
+    "@types/node": "^14"
+  },
+  "jupiterSettings": {
+    "runtime": {
+      "features": {
+        "router": true,
+        "state": true
+      }
+    }
+  }
+}
